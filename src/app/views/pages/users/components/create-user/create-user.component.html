@@ -1,0 +1,68 @@
+<nav class="page-breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/users">Users</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Create User</li>
+    </ol>
+</nav>
+
+<div class="row auth-page">
+    <div class="col-md-12 col-xl-10 mx-auto">
+        <div class="card">
+            <div class="row">
+                <div class="col-md-4 pe-md-0">
+                    <div class="auth-side-wrapper"
+                        [ngStyle]="{ 'background-image': 'url(https://via.placeholder.com/219x452)' }">
+
+                    </div>
+                </div>
+                <div class="col-md-8 ps-md-0">
+                    <div class="auth-form-wrapper px-4 py-5">
+                        <h6 class="card-title">User Form</h6>
+                        <h5 class="text-muted fw-normal mb-4">Hello! create a new user.</h5>
+
+                        <form class="forms-sample" [formGroup]="createForm">
+                            <div class="mb-3">
+                                <label for="exampleInputUsername1" class="form-label">Username</label>
+                                <input type="text" class="form-control" id="exampleInputUsername1" formControlName="username" autocomplete="off"
+                                    placeholder="Username">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" formControlName="email"
+                                    placeholder="Email" value="admin@demo.com">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="exampleInputPassword1"
+                                    formControlName="password" autocomplete="current-password" placeholder="Password"
+                                    value="12345678">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlSelect1" class="form-label">Select Role</label>
+                                <select class="form-select" id="exampleFormControlSelect1" formControlName="role">
+                                    <!-- <option selected disabled>role</option> -->
+                                    <option>User</option>
+                                    <option>Admin</option>
+                                    <option>Blogger</option>
+                                </select>
+                            </div>
+                            <div class="form-check mb-3">
+                                <input type="checkbox" class="form-check-input" id="authCheck">
+                                <label class="form-check-label" for="authCheck">
+                                    Remember me
+                                </label>
+                            </div>
+                            <div>
+                                <button type="submit" class="btn btn-primary me-2" [disabled]="createForm.invalid"  (click)="submit()">Submit
+                                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"
+                                        id="spinner" style="visibility: hidden"></span>
+                                </button>
+                                <button class="btn btn-secondary" routerLink="/users">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

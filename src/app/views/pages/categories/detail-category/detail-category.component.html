@@ -1,0 +1,65 @@
+<nav class="page-breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/category">Categories</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Update Category</li>
+    </ol>
+</nav>
+
+<div class="row auth-page">
+    <div class="col-md-12 col-xl-10 mx-auto">
+        <div class="card">
+            <div class="row">
+                <div class="col-md-4 pe-md-0">
+                    <div class="auth-side-wrapper" [ngStyle]="{ 'background-image': 'url('+category.image+')' }">
+
+                    </div>
+                </div>
+                <div class="col-md-8 ps-md-0">
+                    <div class="auth-form-wrapper px-4 py-5">
+                        <h6 class="card-title">Category Form</h6>
+                        <h5 class="text-muted fw-normal mb-4">Hello! update category information here</h5>
+
+                        <form class="forms-sample" [formGroup]="createForm">
+                            <div class="mb-3">
+                                <label for="exampleInputUsername1" class="form-label">Category Name</label>
+                                <input type="text" class="form-control" id="exampleInputUsername1"
+                                    formControlName="name" autocomplete="off" placeholder="Category Name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Description</label>
+                                <textarea type="email" class="form-control" id="exampleInputEmail1"
+                                    formControlName="description" placeholder="Description" value="Description">
+                                </textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlSelect1" class="form-label">Parent category</label>
+                                <ng-select [items]="categories" bindLabel="name" bindValue="id"
+                                    placeholder="type to search" [(ngModel)]="selectedSearchCategoryId"
+                                    formControlName="parent">
+                                </ng-select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlSelect1" class="form-label">Children category : </label>
+                                <ul class="row">
+                                    <li *ngFor="let childCategory of category.cat.children" class="col-md-6 col-lg-4">
+                                        <a [routerLink]="['/category/detail', childCategory.id]">{{ childCategory.name
+                                            }}</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <button type="submit" class="btn btn-primary me-2" [disabled]="createForm.invalid"
+                                    (click)="submit()">Update
+                                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"
+                                        id="spinner" style="visibility: hidden"></span>
+                                </button>
+                                <button class="btn btn-secondary" routerLink="/category">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

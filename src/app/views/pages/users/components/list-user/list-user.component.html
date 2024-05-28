@@ -1,0 +1,81 @@
+<nav class="page-breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink=".">Users</a></li>
+    <li class="breadcrumb-item active" aria-current="page">List User</li>
+  </ol>
+</nav>
+
+<div class="row">
+  <div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">All user</h4>
+        <p class=“text-muted”>Check a list of all user of our system</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchText" (keyup)="updateFilter()">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" (click)="clearSearch()">Clear</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md">
+    <button class="btn btn-primary" routerLink="/users/create">Ajouter</button>
+  </div>
+</div>
+
+
+
+<div class="row">
+  <div class="col-md-12 stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h6 class="card-title">Users</h6>
+        <div class="table-responsive">
+          <ngx-datatable class="bootstrap" [rows]="filteredUsers" [loadingIndicator]="loadingIndicator"
+            [columnMode]="ColumnMode.force" [footerHeight]="50" [limit]="10" rowHeight="auto">
+            <ngx-datatable-column name="Id" prop="id">
+              <ng-template ngx-datatable-cell-template let-value="value">
+                <a [routerLink]="['/users/detail', value]">{{ value | slice:0:8 }}</a>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Username" prop="username"></ngx-datatable-column>
+            <ngx-datatable-column name="Email" prop="email"></ngx-datatable-column>
+            <ngx-datatable-column name="Role" prop="userRoles">
+              <ng-template ngx-datatable-cell-template let-value="value">
+                <p *ngFor="let v of value">{{ v.roleName }}</p>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Created Date" prop="created_at">
+              <ng-template ngx-datatable-cell-template let-value="value">
+                {{ value | date: 'dd/MM/yyyy HH:mm' }}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Last Update" prop="updated_at">
+              <ng-template ngx-datatable-cell-template let-value="value">
+                {{ value | date: 'dd/MM/yyyy HH:mm' }}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Status" prop="verified"></ngx-datatable-column>
+            <ngx-datatable-column name="Actions">
+              <ng-template ngx-datatable-cell-template let-row="row">
+                <button class="btn btn-primary btn-icon" (click)="viewDetails(row.id)">
+                  <i class="feather icon-eye"></i>
+                </button>
+                <button type="button" class="btn btn-danger btn-icon mr-2" (click)="disableUserPopup(row.id)">
+                  <i class="feather icon-trash"></i>
+                </button>
+              </ng-template>
+            </ngx-datatable-column>
+          </ngx-datatable>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
