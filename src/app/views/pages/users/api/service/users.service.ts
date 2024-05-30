@@ -86,7 +86,7 @@ export class UsersService {
    */
   createUser(user: CreateUserDto) {
     if(user.role == UserRoles.ADMIN){
-      return this.httpClient.post<any>(`${this.host}/auth/admin/create`, user).pipe(
+      return this.httpClient.post<any>(`${this.host}/admin/user/create`, user).pipe(
         shareReplay(1)
       )
     }

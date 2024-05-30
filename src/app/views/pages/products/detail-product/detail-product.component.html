@@ -1,0 +1,54 @@
+<nav class="page-breadcrumb">
+     <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a routerLink="/product">Products</a></li>
+         <li class="breadcrumb-item active" aria-current="page">Update Product</li>
+     </ol>
+ </nav>
+ 
+ <div class="row auth-page">
+     <div class="col-md-12 col-xl-10 mx-auto">
+         <div class="card">
+             <div class="row">
+                 <div class="col-md-4 pe-md-0">
+                     <div class="auth-side-wrapper" [ngStyle]="{ 'background-image': 'url('+product.image+')' }">
+ 
+                     </div>
+                 </div>
+                 <div class="col-md-8 ps-md-0">
+                     <div class="auth-form-wrapper px-4 py-5">
+                         <h6 class="card-title">Product Form</h6>
+                         <h5 class="text-muted fw-normal mb-4">Hello! update product information here</h5>
+ 
+                         <form class="forms-sample" [formGroup]="createForm">
+                             <div class="mb-3">
+                                 <label for="exampleInputUsername1" class="form-label">Product Name</label>
+                                 <input type="text" class="form-control" id="exampleInputUsername1"
+                                     formControlName="name" autocomplete="off" placeholder="Product Name">
+                             </div>
+                             <div class="mb-3">
+                                 <label for="exampleInputEmail1" class="form-label">Description</label>
+                                 <textarea type="email" class="form-control" id="exampleInputEmail1"
+                                     formControlName="description" placeholder="Description" value="Description">
+                                 </textarea>
+                             </div>
+                             <div class="mb-3">
+                                 <label for="exampleFormControlSelect1" class="form-label">Price product</label>
+                                 <input type="text" class="form-control" id="exampleInputUsername1"
+                                     formControlName="price" autocomplete="off" placeholder="Product stock">
+                             </div>
+                            
+                             <div>
+                                 <button type="submit" class="btn btn-primary me-2" [disabled]="createForm.invalid"
+                                     (click)="submit()">Update
+                                     <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"
+                                         id="spinner" style="visibility: hidden"></span>
+                                 </button>
+                                 <button class="btn btn-secondary" routerLink="/products">Cancel</button>
+                             </div>
+                         </form>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </div>

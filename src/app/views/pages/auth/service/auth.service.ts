@@ -60,7 +60,7 @@ export class AuthService {
   }
 
   register(email: string, username: string, password: string): Observable<any> {
-    return this.httpClient.post<any>(this.host + '/auth/signup/', { email, password, username }, { observe: 'body' });
+    return this.httpClient.post<any>(this.host + '/auth/register', { email, password, username }, { observe: 'body' });
   }
 
   saveToken(jwt: any): boolean {

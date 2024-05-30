@@ -21,16 +21,8 @@ const routes: Routes = [
         loadChildren: () => import('./views/pages/users/users.module').then(m => m.UsersModule)
       },
       {
-        path: 'category',
-        loadChildren: () => import('./views/pages/categories/categories.module').then(m => m.CategoriesModule)
-      },
-      {
-        path: 'comment',
-        loadChildren: () => import('./views/pages/comments/comments.module').then(m => m.CommentsModule)
-      },
-      {
-        path: 'post',
-        loadChildren: () => import('./views/pages/posts/posts.module').then(m => m.PostsModule)
+        path: 'products',
+        loadChildren: () => import('./views/pages/products/products.module').then(m => m.ProductsModule)
       },
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' }, 
       { path: '**', redirectTo: 'dashboard', pathMatch: 'full' }
